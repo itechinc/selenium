@@ -1,0 +1,53 @@
+package com.ecalix.tests;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import com.ecalix.common.CommonMethods;
+
+public class LoginTests extends CommonMethods {
+
+	
+	@BeforeMethod
+	public void setUp(){
+		openBrowser();
+	    openUrl();
+		
+	}
+	
+	@Test
+	public void Login01(){
+
+		
+	
+	
+		String ActualText=driver.findElement(By.xpath("//*[@id='bodyContent']/h1")).getText();
+	    String ExpectedText="Welcome to iBusiness";
+	    Assert.assertEquals(ActualText, ExpectedText);
+	 
+	}
+	
+	@Test
+	public void Login02(){
+		driver.findElement(By.xpath("//*[@id='bodyContent']/div/div[1]/a[1]/u")).click();
+		driver.findElement(By.name("email_address")).sendKeys("ecalix");
+		driver.findElement(By.name("password")).sendKeys("test123");
+		driver.findElement(By.xpath("//*[@id='tdb5']/span[1]")).click();
+		String ActualText=driver.findElement(By.xpath("//*[@id='bodyContent']/h1")).getText();
+	    String ExpectedText="Welcome to iBusiness";
+	    Assert.assertEquals(ActualText, ExpectedText);
+
+	}
+	
+	@AfterMethod
+	public void tearDown(){
+		closeBrowser();
+		
+	}
+
+}

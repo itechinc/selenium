@@ -1,0 +1,6 @@
+package com.ecalix.tests;
+
+public class LoginTests {
+	private WebDriver driver;
+
+}
